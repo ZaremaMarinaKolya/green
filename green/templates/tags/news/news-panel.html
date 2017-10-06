@@ -1,0 +1,15 @@
+{% for one in news|slice:":3" %}
+<div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw {% cycle 'fa-compass' 'fa-check' 'fa-gift' %} "></i>
+                            {{ one.name }}</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>{{ one.brief }}</p>
+                        <a href="{% url 'news-detail' one.slug %}" class="btn btn-default">Читать</a>
+                    </div>
+                </div>
+            </div>
+
+{% endfor %}

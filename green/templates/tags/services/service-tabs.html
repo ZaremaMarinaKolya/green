@@ -1,0 +1,21 @@
+<div class="col-lg-12">
+                <ul id="myTab" class="nav nav-tabs nav-justified">
+                    {% for service in  services|slice:":4" %}
+        <li class="{% cycle 'active' '' '' '' %}">
+            <a href="{% cycle '#service-one' '#service-two' '#service-three' '#service-four' %}"
+               data-toggle="tab">
+                <i class="fa {% cycle 'fa-tree' 'fa-car' 'fa-support' 'fa-database' %}"></i> {{ service.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+                <div id="myTabContent" class="tab-content">
+                    {% for service in  services|slice:":4" %}
+                    <div class="tab-pane fade {% cycle 'active' '' '' '' '' %} in"
+                         id="{% cycle 'service-one' 'service-two' 'service-three' 'service-four' %}">
+                        {{ service.content|safe }}
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>

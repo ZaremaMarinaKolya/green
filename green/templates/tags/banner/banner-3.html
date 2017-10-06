@@ -1,0 +1,9 @@
+{% for one in banner|slice:":3" %}
+<div class="well" >
+    <a href="{% url 'banner-three-list' %}"> <h4>{{ one.name }}</h4></a>
+    <a href="{% url 'banner-three-detail' one.slug %}">
+        <img src="{{ MEDIA }}{{ one.image }}" class="img-responsive">
+    </a>
+    <p><a href="{{ one.url }}"> {{ one.brief }}</a></p>
+</div>
+{% endfor %}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ page.name }}
+{#                    <small>Subheading</small>#}
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Главная</a>
+                    </li>
+                    <li><a href="{% url 'all-categories' %}">Все категории</a>
+                    </li>
+                    <li class="active">{{ page.name }}</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Название</th>
+      <th>Адрес страницы</th>
+    </tr>
+  </thead>
+  <tr>
+{#  Выводим страницы 1 стиля #}
+
+        {% if page_list_one %}
+{% for one in page_list_one %}
+     <tr>
+    <th scope="row">стиль 1</th>
+    <td>{{ one.name }}</td>
+    <td><a href="{{ one.get_page_one_url }}">{{ one.get_page_one_url }}</a></td>
+     </tr>
+    {% endfor %}
+    {% endif %}
+    {#  Выводим страницы 2 стиля #}
+    {% if page_list_one %}
+    {% for one in page_list_two %}
+        <tr>
+    <th scope="row">стиль 2</th>
+    <td>{{ one.name }}</td>
+    <td><a href="{{ one.get_page_two_url }}">{{ one.get_page_two_url }}</a></td>
+        </tr>
+    {% endfor %}
+    {% endif %}
+{#  Выводим страницы 3 стиля #}
+    {% if page_list_three %}
+    {% for one in page_list_three %}
+        <tr>
+    <th scope="row">стиль 3</th>
+    <td>{{ one.name }}</td>
+    <td><a href="{{ one.get_page_three_url }}">{{ one.get_page_three_url }}</a></td>
+        </tr>
+    {% endfor %}
+    {% endif %}
+{#  Выводим страницы 4 стиля #}
+    {% if page_list_four %}
+    {% for one in page_list_four %}
+        <tr>
+        <th scope="row">стиль 4</th>
+    <td>{{ one.name }}</td>
+    <td><a href="{{ one.get_page_four_url }}">{{ one.get_page_four_url }}</a></td>
+        </tr>
+    {% endfor %}
+    {% endif %}
+    {#  Выводим страницы 5 стиля #}
+    {%  if page_list_five %}
+    {% for one in page_list_five %}
+        <tr>
+        <th scope="row">стиль 5</th>
+    <td>{{ one.name }}</td>
+    <td><a href="{{ one.get_page_five_url }}">{{ one.get_page_five_url }}</a></td>
+        </tr>
+    {% endfor %}
+    {% endif %}
+
+  </tbody>
+</table>
+
+{% endblock content %}

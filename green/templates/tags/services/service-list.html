@@ -1,0 +1,48 @@
+<div class="col-md-4">
+    {% for service in services|slice:":3" %}
+        <div class="media">
+                    <div class="pull-left">
+                        <span class="fa-stack fa-2x">
+                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fa {% cycle 'fa-tree' 'fa-car' 'fa-support' %} fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="{% url 'service-detail' service.slug %}">{{ service.name }}</a> </h4>
+                        <p>{{ service.brief }}</p>
+                    </div>
+                </div>
+    {% endfor %}
+            </div>
+            <div class="col-md-4">
+                {% for service in services|slice:"3:6" %}
+        <div class="media">
+                    <div class="pull-left">
+                        <span class="fa-stack fa-2x">
+                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fa {% cycle 'fa-database' 'fa-bomb' 'fa-bank' %} fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="{% url 'service-detail' service.slug %}">{{ service.name }}</a></h4>
+                        <p>{{ service.brief }}</p>
+                    </div>
+                </div>
+    {% endfor %}
+            </div>
+            <div class="col-md-4">
+                {% for service in services|slice:"6:9" %}
+        <div class="media">
+                    <div class="pull-left">
+                        <span class="fa-stack fa-2x">
+                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fa {% cycle 'fa-paper-plane' 'fa-space-shuttle' 'fa-recycle' %} fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="{% url 'service-detail' service.slug %}">{{ service.name }}</a></h4>
+                        <p>{{ service.brief }}</p>
+                    </div>
+                </div>
+    {% endfor %}
+            </div>

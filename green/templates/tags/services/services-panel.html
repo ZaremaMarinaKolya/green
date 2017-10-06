@@ -1,0 +1,16 @@
+{% for service in services %}
+<div class="col-md-3 col-sm-6">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <a href="{% url 'service-detail' service.slug %}">
+                            <img src="{{ MEDIA }}{{ service.min_image }}" class="img-responsive"/>
+                            </a>
+                    </div>
+                    <div class="panel-body">
+                        <h4>{{ service.name }}</h4>
+                        <p>{{ service.brief }}</p>
+                        <a href="{% url 'service-detail' service.slug %}" class="btn btn-primary">Узнать больше</a>
+                    </div>
+                </div>
+            </div>
+{% endfor %}

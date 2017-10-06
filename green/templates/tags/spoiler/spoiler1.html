@@ -1,0 +1,18 @@
+<div class="panel-group" id="accordion">
+    {% for one in spoiler %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#{{ one.date|date:'ydGisu' }}">{{ one.name }}</a>
+                            </h4>
+                        </div>
+                        <div id="{{ one.date|date:'ydGisu' }}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                {{ one.text|safe }}
+                            </div>
+                        </div>
+                    </div>
+    {%  endfor %}
+                    <!-- /.panel -->
+                </div>
+                <!-- /.panel-group -->

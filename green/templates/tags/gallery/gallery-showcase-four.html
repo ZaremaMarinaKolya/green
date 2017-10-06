@@ -1,0 +1,8 @@
+{% for image in showcase|slice:":6" %}
+<div class="col-md-4 col-sm-6">
+                <a href="{% url 'gallery-three-col' %}">
+                    <img class="img-responsive img-portfolio img-hover"
+                         src="{{ MEDIA }}{{ image.image }}" alt="">
+                </a>
+            </div>
+{% endfor %}

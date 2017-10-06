@@ -1,0 +1,10 @@
+{% load staticfiles %}
+<ul class="pgwSlider2">
+    {% for slide in sliders %}
+    <li>
+        <a href="{{ slide.url }}" target="_blank">
+            <img src="{{ MEDIA }}{{ slide.image }}" alt="{{ slide.name }}" data-description="{{ slide.text }}">
+        </a>
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ page.name }}
+{#                    <small>Subheading</small>#}
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Главная</a>
+                    </li>
+                    <li><a href="{% url 'all-customers' %}">Все клиенты</a>
+                    </li>
+                    <li class="active">{{ page.name }}</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Intro Content -->
+        <div class="row">
+            <div class="col-md-6">
+                <img class="img-responsive" src="{{ MEDIA_URL }}{{ page.image }}" alt="">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ page.name }}</h2>
+                {{ page.content|safe }}
+                </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Team Members -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Наши работы</h2>
+            </div>
+
+            {% for stuff in customers %}
+            <div class="col-md-4 text-center">
+                <div class="thumbnail" style="height: 500px">
+                    <a href="{% url 'customer-detail' stuff.slug %}"> <img class="img-responsive" src="{{ MEDIA_URL }}{{ stuff.image }}" alt=""></a>
+                    <div class="caption">
+                        <h3>{{ stuff.name}}<br>
+                            <small>{{ stuff.job_title }}</small>
+                        </h3>
+                        {% if stuff.phone %}
+                        <p>т. {{ stuff.phone }}</p>
+                        {% endif %}
+                        {% if stuff.brief %}
+                        <p>{{ stuff.brief|truncatewords:12 }}</p>
+                    {% endif %}
+                        <ul class="list-inline">
+                            <li><a href="{{ stuff.social_one }}"><i class="fa fa-2x fa-facebook-square"></i></a>
+                            </li>
+                            <li><a href="{{ stuff.social_two }}"><i class="fa fa-2x fa-linkedin-square"></i></a>
+                            </li>
+                            <li><a href="{{ stuff.social_three }}"><i class="fa fa-2x fa-twitter-square"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <!-- /.row -->
+    <!-- Our Customers -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Сотрудники</h2>
+            </div>
+            {% for one in team %}
+            <div class="col-md-2 col-sm-4 col-xs-6">
+                <a href="{%  url 'employee-detail' one.slug %}" ><img class="img-responsive customer-img" src="{{ MEDIA_URL }}{{ one.image }}"
+                                 alt="{{ one.name }}" title="{{ one.name }}"></a>
+            </div>
+            {%  endfor %}
+        </div>
+        <!-- /.row -->
+
+{% endblock content %}

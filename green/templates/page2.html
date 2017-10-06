@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ page.name }}
+{#                    <small>Subheading</small>#}
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Главная</a>
+                    </li>
+                    {% for one in category %}
+                    <li><a href="{% url 'page-category' one.slug %}">{{ one.name }}</a>
+                    </li>
+                    {% endfor %}
+                    <li class="active">{{ page.name }}</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Sidebar Column -->
+            <div class="col-md-3">
+                <div class="list-group">
+                    {% for one in category_pages_one %}
+                    <a href="{{ one.get_page_one_url }}" class="list-group-item">{{ one.name }}</a>
+                    {% endfor %}
+                    {% for one in category_pages_two %}
+                        <a href="{{ one.get_page_two_url }}" class="list-group-item">{{ one.name }}</a>
+                        {% endfor %}
+                {% for one in category_pages_three %}
+                        <a href="{{ one.get_page_three_url }}" class="list-group-item">{{ one.name }}</a>
+                        {% endfor %}
+                {% for one in category_pages_four %}
+                        <a href="{{ one.get_page_four_url }}" class="list-group-item">{{ one.name }}</a>
+                        {% endfor %}
+                {% for one in category_pages_five %}
+                        <a href="{{ one.get_page_five_url }}" class="list-group-item">{{ one.name }}</a>
+                        {% endfor %}
+                </div>
+            </div>
+            <!-- Content Column -->
+            <div class="col-md-9">
+                {{ page.content|safe }}
+            </div>
+        </div>
+        <!-- /.row -->
+
+{% endblock content %}
+{% block additional_scripts %}
+{#    Подсвечиваем активное меню, добавляя класс актив #}
+<script>
+    $(function(){
+        var url = location.pathname;
+    $('a').each(function(){
+     if ($(this).attr('href') ===url){
+        $(this).addClass("active");
+    }
+    });
+    });
+</script>
+{% endblock %}

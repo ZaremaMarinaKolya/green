@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ page.name }}
+{#                    <small>Subheading</small>#}
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Главная</a>
+                    </li>
+                    <li><a href="{% url 'all-team' %}">Все сотрудники</a>
+                    </li>
+                    <li class="active">{{ page.name }}</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Intro Content -->
+        <div class="row">
+            <div class="col-md-6">
+                <img class="img-responsive" src="{{ MEDIA_URL }}{{ page.image }}" alt="">
+            </div>
+            <div class="col-md-6">
+                <h2>{{ page.name }}</h2>
+                {{ page.content|safe }}
+                </div>
+        </div>
+        <!-- /.row -->
+<hr>
+        <ul class="list-inline">
+                            <li><a href="{{ page.social_one }}"><i class="fa fa-2x fa-facebook-square"></i></a>
+                            </li>
+                            <li><a href="{{ page.social_two }}"><i class="fa fa-2x fa-linkedin-square"></i></a>
+                            </li>
+                            <li><a href="{{ page.social_three }}"><i class="fa fa-2x fa-twitter-square"></i></a>
+                            </li>
+                        </ul>
+<hr>
+    <p>Должность: {{ page.job_title }}</p>
+    {% if page.phone %}
+    <p>Телефон: {{ page.phone }}</p>
+    {% endif %}
+    {% if page.messenger %}
+    <p>Мессенжер: {{ page.messenger }}</p>
+    {% endif %}
+
+{% endblock content %}

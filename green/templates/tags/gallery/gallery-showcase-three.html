@@ -1,0 +1,8 @@
+{% for image in showcase %}
+<div class="col-md-2 col-sm-6">
+                <a href="{% url 'image-detail' image.slug %}">
+                    <img class="img-responsive img-portfolio img-hover"
+                         src="{{ MEDIA }}{{ image.image }}" alt="">
+                </a>
+            </div>
+{% endfor %}

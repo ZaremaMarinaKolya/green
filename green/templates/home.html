@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load page_tags %}
+{% load staticfiles %}
+
+{% block additional_styles %}
+    <link href="{% static 'pgw/pgwslider.min.css' %}" rel="stylesheet">
+{% endblock %}
+{% block header_id %}{% endblock %}
+{% block header_class%}{% endblock %}
+{% block header %}
+    {% slider1 %}
+    {% endblock header %}
+{% block content %}
+<!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Welcome to GREEN Core!
+                </h1>
+            </div>
+            <!-- News -->
+        {% news_panel %}
+        </div>
+        <!-- /.row -->
+    <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Отзывы
+                </h1>
+            </div>
+            <!-- News -->
+        {% opinion_panel %}
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Галерея</h2>
+            </div>
+            {% gallery_showcase_one %}
+        </div>
+        <!-- /.row -->
+
+        <!-- Features Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Modern Business Features</h2>
+            </div>
+            <div class="col-md-6">
+                {{ page.content |safe  }}
+            </div>
+            <div class="col-md-6">
+                <img class="img-responsive" src="{{ MEDIA_URL }}{{ page.image }}" alt="">
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Call to Action Section -->
+        <div class="well">
+            <div class="row">
+
+                <div class="col-md-8">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-lg btn-default btn-block" href="#">Заказать звонок</a>
+                </div>
+            </div>
+        <div class="row">
+            {% html_one %}
+        </div>
+        </div>
+    {% spoiler_one %}
+{% endblock content %}
+
+{% block additional_scripts %}
+    <script src="{% static 'pgw/pgwslider.min.js' %}"></script>
+    <!-- Script to Activate the slider -->
+    <script>
+    $(document).ready(function() {
+{#        PWG slider. Please, see the settigs http://pgwjs.com/pgwslider/#}
+    $('.pgwSlider1').pgwSlider({
+        transitionEffect: "fading",
+        intervalDuration: 5000,
+        autoSlide: true,
+        displayList: true,
+        displayControls: false
+    });
+});
+    </script>
+{% endblock %}

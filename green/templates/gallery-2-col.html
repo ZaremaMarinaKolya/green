@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{%  load staticfiles %}
+{% block additional_styles %}
+    <link href="{% static 'swipbox/src/css/swipebox.min.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+ <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Галерея
+                    <small>Все изображения</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{%  url 'index' %}">Главная</a>
+                    </li>
+                    <li class="active">Все изображения</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        {% for one in page %}
+        <!-- Project One -->
+
+            <div class="col-md-6 img-portfolio">
+                <a href="{{ MEDIA_URL }}{{ one.image }}" class="swipebox">
+                    <img class="img-responsive img-hover" class="swipebox"
+                         src="{{ MEDIA_URL }}{{ one.image }}" alt="">
+                </a>
+                <h3>
+                    <a href="{% url 'image-detail' one.slug %}">{{ one.name }}</a>
+                </h3>
+                <p>{{ one.brief|truncatewords:6 }}</p>
+            </div>
+        <!-- /.row -->
+
+
+        {%  endfor %}
+   <hr>
+
+        <!-- Pagination -->
+        <div class="row text-center">
+            <!-- Pager -->
+            {% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">Назад</a></li>
+    {% else %}
+      <li class="disabled"><span>Назад</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only"></span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">Вперёд</a></li>
+    {% else %}
+      <li class="disabled"><span>Вперёд</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+        </div>
+        <!-- /.row -->
+{% endblock %}
+{% block additional_scripts %}
+    <script src="{% static 'swipbox/lib/ios-orientationchange-fix.js' %}"></script>
+    <script src="{% static 'swipbox/src/js/jquery.swipebox.min.js' %}"></script>
+    <script type="text/javascript">
+	$( document ).ready(function() {
+
+			/* Basic Gallery */
+			$( '.swipebox' ).swipebox();
+        
+      });
+	</script>
+{% endblock %}
